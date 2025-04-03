@@ -8,8 +8,10 @@
 	"html.format.preserveNewLines": false,
 	"html.format.unformatted": "wbr",
 	"editor.detectIndentation": false,
-	"editor.indentSize": 4,
+	"editor.indentSize": "tabSize",
 	"editor.insertSpaces": false,
 	"editor.tabCompletion": "on",
-	"html.format.indentHandlebars": true
+	"html.format.indentHandlebars": true,
+	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+	"javascript.format.semicolons": "insert"
 }
