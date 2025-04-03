@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Visual Countdown Timer</title>
+	<script>
+		class VisualCountdownTimer extends HTMLElement {
+			connectedCallback() {
+				this.timer = 200;
+				this.style.backgroundColor = 'green';
+				this.style.display = 'inline-block';
+				this.style.height = '50px';
+				requestAnimationFrame(() =>
+					this.update());
+			}
+
+			update() {
+				this.timer--;
+				if (this.timer <= 0) {
+					this.timer = 200;
+				}
+				this.style.width =
+					this.timer + 'px';
+				requestAnimationFrame(() =>
+					this.update());
+			}
+		}
+
+		customElements.define('visual-countdown-timer', VisualCountdownTimer);
+
+	</script>
+</head>
+
+<body>
+	<visual-countdown-timer></visual-countdown-timer>
+</body>
+
+</html>
