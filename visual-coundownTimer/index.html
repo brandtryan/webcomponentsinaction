@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Visual Countdown Timer</title>
+	<meta charset="UTF-8">
+	<title>Visual Countdown Timer (like p5.js loop)</title>
 	<script>
 		class VisualCountdownTimer extends HTMLElement {
 			connectedCallback() {
@@ -19,20 +20,18 @@
 				if (this.timer <= 0) {
 					this.timer = 200;
 				}
-				this.style.width =
-					this.timer + 'px';
+				this.style.width = this.timer + 'px';
 				requestAnimationFrame(() =>
 					this.update());
 			}
 		}
 
-		customElements.define('visual-countdown-timer', VisualCountdownTimer);
-
+		customElements.define('countdown-timer', VisualCountdownTimer);
 	</script>
 </head>
 
 <body>
-	<visual-countdown-timer></visual-countdown-timer>
+	<countdown-timer></countdown-timer>
 </body>
 
 </html>

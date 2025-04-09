@@ -1,22 +1,19 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-	<title>Game Component Base</title>
 	<script>
-		class GameComponentBase extends HTMLElement {
+		class GameComponentBase
+			extends HTMLElement {
 			constructor() {
 				super();
 				this.onUpdate();
 			}
 			update() { }
-
 			onUpdate() {
 				this.update();
 				requestAnimationFrame(() => this.onUpdate());
 			}
 		}
-
 		class VisualCountdownTimer
 			extends GameComponentBase {
 			connectedCallback() {

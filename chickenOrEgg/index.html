@@ -1,0 +1,33 @@
+<script>
+	class MyCustomTag extends HTMLElement {
+		constructor() {
+			super();
+			console.log('From constructor',
+				this.getAttribute('title'));
+
+		}
+		connectedCallback() {
+			console.log('From connectedCallback',
+				this.getAttribute('title'));
+		}
+	}
+
+	if (!customElements.get('my-custom-tag')) {
+		customElements.define('my-custom-tag', MyCustomTag);
+	}
+
+</script>
+<style>
+	my-custom-tag {
+		background-color: blue;
+		padding: 20px;
+		display: inline-block;
+		color: white;
+	}
+</style>
+
+<body>
+	<my-custom-tag title="Another title"></my-custom-tag>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Unsplash Demo Search</title>
+	<script>
+		class PolySearch extends HTMLElement {
+			connectedCallback() {
+				this.doSearch();
+			}
+			doSearch() {
+				var myHeaders = new Headers();
+				myHeaders.append('Accept-Version', 'v1');
+				myHeaders.append('Authorization', 'Client-ID 87dg8T-7xb0yIPGrgtu0pSe4o6fqobzfvB7TxXJEOGo');
+
+				var requestOptions = {
+					method: 'GET',
+					headers: myHeaders,
+					redirect: 'follow',
+				};
+
+				fetch('https://api.unsplash.com/search/photos?query=parrot', requestOptions)
+					.then(response => response.json())
+					.then(result => this.renderResults(result.results))
+					.catch(error => console.log('error', error));
+
+			}
+			renderResults(assets) {
+				let html = '';
+				for (let c = 0; c < assets.length; c++) {
+					html += `<img src="${assets[ c ].urls.thumb}" width="200" height="150" />`;
+				}
+				this.innerHTML = html;
+			}
+		}
+		customElements.define(
+			'poly-search', PolySearch);
+	</script>
+	<style>
+		poly-search {
+			border-style: solid;
+			border-width: 1px;
+			border-color: #9a9a9a;
+			padding: 10px;
+			background-color: #fafafa;
+			display: inline-block;
+			text-align: center;
+		}
+
+		poly-search img {
+			margin: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<poly-search></poly-search>
+</body>
+
+</html>
